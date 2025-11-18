@@ -1,0 +1,160 @@
+body{
+    background: linear-gradient(80deg, #0f170f 0%, #275c3d 50%, #8ba882 100%);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 20px 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 40px 0;
+    padding: 30px 80px;
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    align-items: center;
+    justify-items: center;
+    gap: 50px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px 0;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    min-height: 50vh;
+    font-size: 100px;
+    color:#82b67d;
+}
+
+.name {
+    line-height: 1;
+    text-align: left;
+    white-space: pre-line;
+    text-shadow: 10px 3px 6px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.name:hover {
+    transform: scale(1.05);
+    text-shadow: 15px 5px 10px rgba(0, 0, 0, 0.7);
+    color: #8ba882;
+}
+
+.left{
+    margin: 20px 0;
+    padding: 15px 0;
+    background-color: rgba(192, 192, 158, 0.5);
+    width: 300px;
+    height: 80vh;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    justify-self: start;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: rgba(1, 6, 2, 0.705);
+    text-align: justify;
+    padding: 20px;
+    font-size: 24px;
+}
+
+.left p {
+    text-align: justify;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    color: rgba(1, 6, 2, 0.9);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: center;
+    border-bottom: 2px solid rgba(1, 6, 2, 0.3);
+    padding-bottom: 5px;
+}
+
+.about-text {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.education-item {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.degree-title {
+    color: rgba(1, 6, 2, 0.8);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.university {
+    color: rgba(1, 6, 2, 0.7);
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 3px;
+}
+
+.duration {
+    color: rgba(1, 6, 2, 0.6);
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.achievements {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.achievements li {
+    color: rgba(1, 6, 2, 0.7);
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.left:hover{
+    transform: scale(1.05);
+
+}
+
+.right{
+    margin: 20px 0;
+    padding: 15px 0;
+    background-color: rgba(192, 192, 158, 0.5);
+    width: 300px;
+    height: 80vh;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    justify-self: end;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.right:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6)
+
+}
