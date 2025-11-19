@@ -30,6 +30,8 @@ body{
     min-height: 50vh;
     font-size: 100px;
     color:#82b67d;
+    position: relative;
+    z-index: 5;
 }
 
 .name {
@@ -50,7 +52,7 @@ body{
 .left{
     margin: 20px 0;
     padding: 15px 0;
-    background-color: rgba(192, 192, 158, 0.5);
+    background-color: rgba(192, 192, 158, 0.95);
     width: 300px;
     height: 80vh;
     border-radius: 15px;
@@ -148,7 +150,7 @@ body{
 .right{
     margin: 20px 0;
     padding: 10px;
-    background-color: rgba(192, 192, 158, 0.5);
+    background-color: rgba(192, 192, 158, 0.95);
     width: 300px;
     height: 80vh;
     border-radius: 15px;
@@ -174,14 +176,14 @@ body{
 
 .category-title {
     color: rgba(1, 6, 2, 0.8);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 2px;
 }
 
 .skills-text {
     color: rgba(1, 6, 2, 0.7);
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.2;
     margin-bottom: 4px;
     text-align: justify;
@@ -193,14 +195,14 @@ body{
 
 .cert-title {
     color: rgba(1, 6, 2, 0.8);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     margin-bottom: 1px;
 }
 
 .cert-provider {
     color: rgba(1, 6, 2, 0.6);
-    font-size: 14px;
+    font-size: 16px;
     font-style: italic;
     margin-bottom: 2px;
 }
@@ -210,4 +212,245 @@ body{
     font-size: 14px;
     line-height: 1.2;
     text-align: justify;
+}
+
+/* Contact Panel Styles */
+.contact-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 10%;
+    transform: translateY(120%);
+    width: 520px;
+    height: auto;
+    background: rgba(192, 192, 158, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    font-family: "Oswald", sans-serif;
+    transition: all 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-content {
+    padding: 35px 30px;
+}
+
+.contact-title {
+    color: rgba(1, 6, 2, 0.9);
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 3px solid rgba(1, 6, 2, 0.3);
+    padding-bottom: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 8px 0;
+    transition: transform 0.2s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+}
+
+.contact-icon {
+    font-size: 20px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contact-label {
+    color: rgba(1, 6, 2, 0.8);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.contact-link {
+    color: rgba(1, 6, 2, 0.7);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: rgba(1, 6, 2, 0.9);
+    text-decoration: underline;
+}
+
+.contact-text {
+    color: rgba(1, 6, 2, 0.7);
+    font-size: 14px;
+}
+
+/* Scroll Animation Styles */
+#leftBox, #rightBox, #centerName, #projectsPanel, #contactPanel {
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#centerName {
+    transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#contactPanel {
+    transition: all 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.projects-panel {
+    position: fixed;
+    top: 20px;
+    bottom: 20px;
+    right: 20px;
+    width: 55vw;
+    height: auto;
+    background: rgba(192, 192, 158, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+    transform: translateX(100%);
+    z-index: 10;
+    overflow-y: auto;
+    font-family: "Oswald", sans-serif;
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.projects-content {
+    padding: 40px 30px;
+    height: 100%;
+}
+
+.projects-title {
+    color: rgba(1, 6, 2, 0.9);
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 3px solid rgba(1, 6, 2, 0.3);
+    padding-bottom: 15px;
+}
+
+.project-item {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(1, 6, 2, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.project-name {
+    color: rgba(1, 6, 2, 0.9);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.project-description {
+    color: rgba(1, 6, 2, 0.7);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.project-tech {
+    color: rgba(1, 6, 2, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+    font-style: italic;
+    background: rgba(1, 6, 2, 0.1);
+    padding: 8px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Phase-based Animation States */
+
+/* Phase 1: Left box, name, right box (initial state) */
+body.phase-1 #leftBox,
+body.phase-1 #rightBox,
+body.phase-1 #centerName {
+    transform: none;
+    opacity: 1;
+}
+
+body.phase-1 #projectsPanel {
+    transform: translateX(100%);
+}
+
+body.phase-1 #contactPanel {
+    transform: translateY(120%);
+}
+
+/* Phase 2: Name and project panel */
+body.phase-2 #leftBox {
+    transform: translateX(-120%);
+    opacity: 0.2;
+}
+
+body.phase-2 #rightBox {
+    transform: translateX(120%);
+    opacity: 0.2;
+}
+
+body.phase-2 #centerName {
+    transform: translateX(-30vw) scale(0.8);
+    z-index: 15;
+}
+
+body.phase-2 #projectsPanel {
+    transform: translateX(0);
+}
+
+body.phase-2 #contactPanel {
+    transform: translateY(100%);
+}
+
+/* Phase 3: Contact panel, name, and project panel */
+body.phase-3 #leftBox {
+    transform: translateX(-120%);
+    opacity: 0.2;
+}
+
+body.phase-3 #rightBox {
+    transform: translateX(120%);
+    opacity: 0.2;
+}
+
+body.phase-3 #centerName {
+    transform: translateX(-28vw) translateY(-27vh) scale(0.75);
+    z-index: 15;
+}
+
+body.phase-3 #projectsPanel {
+    transform: translateX(0) scale(0.85);
+    width: 48vw;
+}
+
+body.phase-3 #contactPanel {
+    transform: translateY(-2vh);
+}
+
+/* Add smooth transitions and prevent unwanted scrolling */
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
 }

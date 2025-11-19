@@ -12,7 +12,7 @@
 <body>
     
     <div class="container">
-    <div class="left"> 
+    <div class="left" id="leftBox"> 
         <div class="section">
             <h3 class="section-title">ABOUT ME</h3>
             <p class="about-text">
@@ -36,11 +36,11 @@
         </div>
     </div>
 
-    <div class="center">
+    <div class="center" id="centerName">
         <h1 class="name">JOHN<br>&nbsp;&nbsp;JOMI</h1>
     </div>
 
-    <div class="right">
+    <div class="right" id="rightBox">
         <div class="section">
             <h3 class="section-title">SKILL SET</h3>
             <div class="skills-category">
@@ -66,21 +66,97 @@
             <div class="certification-item">
                 <h4 class="cert-title">Python Programming</h4>
                 <p class="cert-provider">Udemy</p>
-                <p class="cert-description">Comprehensive training on Python fundamentals, data structures, functions, and file handling.</p>
+                
             </div>
             <div class="certification-item">
                 <h4 class="cert-title">UI/UX Design</h4>
                 <p class="cert-provider">Larsen & Toubro (L&T Edutech) - Awaiting Certificate</p>
-                <p class="cert-description">Practical understanding of user experience design, wireframing, and design thinking principles.</p>
+                
             </div>
             <div class="certification-item">
                 <h4 class="cert-title">Large Language Models (LLM)</h4>
                 <p class="cert-provider">NPTEL (IIT Course) - Ongoing</p>
-                <p class="cert-description">Covers the foundations, architecture, and applications of LLMs.</p>
+               
+            </div>
+        </div>
+    </div>
+
+    <div class="projects-panel" id="projectsPanel">
+        <div class="projects-content">
+            <h2 class="projects-title">MY PROJECTS</h2>
+            <div class="project-item">
+                <h3 class="project-name">AI-Powered Web Application</h3>
+                <p class="project-description">A machine learning project that uses Python and TensorFlow to create intelligent web solutions.</p>
+                <div class="project-tech">Technologies: Python, TensorFlow, React, Node.js</div>
+            </div>
+            <div class="project-item">
+                <h3 class="project-name">Personal Portfolio Website</h3>
+                <p class="project-description">A responsive portfolio website built with modern web technologies and smooth animations.</p>
+                <div class="project-tech">Technologies: HTML, CSS, JavaScript, Git</div>
+            </div>
+            <div class="project-item">
+                <h3 class="project-name">Data Structures Implementation</h3>
+                <p class="project-description">Comprehensive implementation of various data structures and algorithms in Java and C++.</p>
+                <div class="project-tech">Technologies: Java, C++, Algorithms</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-panel" id="contactPanel">
+        <div class="contact-content">
+            <h2 class="contact-title">CONTACT & INFO</h2>
+            
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-info">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:john.jomi@example.com" class="contact-link">john.jomi@example.com</a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div class="contact-info">
+                    <span class="contact-label">Phone</span>
+                    <a href="tel:+1234567890" class="contact-link">+1 (234) 567-890</a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">💼</div>
+                <div class="contact-info">
+                    <span class="contact-label">LinkedIn</span>
+                    <a href="https://linkedin.com/in/johnjomi" target="_blank" class="contact-link">linkedin.com/in/johnjomi</a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">💻</div>
+                <div class="contact-info">
+                    <span class="contact-label">GitHub</span>
+                    <a href="https://github.com/JohnJomi" target="_blank" class="contact-link">github.com/JohnJomi</a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">🌐</div>
+                <div class="contact-info">
+                    <span class="contact-label">Portfolio</span>
+                    <a href="https://johnjomi.dev" target="_blank" class="contact-link">johnjomi.dev</a>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-info">
+                    <span class="contact-label">Location</span>
+                    <span class="contact-text">Bengaluru, Karnataka, India</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 </body>
 
+<script src="script.js"></script>
 </html>
