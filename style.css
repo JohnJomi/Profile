@@ -382,6 +382,30 @@ body{
     display: inline-block;
 }
 
+.project-link {
+    margin-top: 15px;
+}
+
+.project-demo-link {
+    color: rgba(1, 6, 2, 0.8);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba(1, 6, 2, 0.15);
+    padding: 10px 16px;
+    border-radius: 25px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(1, 6, 2, 0.3);
+}
+
+.project-demo-link:hover {
+    background: rgba(1, 6, 2, 0.25);
+    color: rgba(1, 6, 2, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* Phase-based Animation States */
 
 /* Phase 1: Left box, name, right box (initial state) */
