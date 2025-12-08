@@ -7,6 +7,21 @@ document.addEventListener('DOMContentLoaded', function() {
     let scrollAccumulator = 0;
     const scrollThreshold = 250; // User needs to scroll this much to trigger
 
+    // Check if device is mobile/tablet
+    function isMobileDevice() {
+        return window.innerWidth <= 768;
+    }
+
+    // If mobile, disable scroll animation and show all content
+    if (isMobileDevice()) {
+        body.classList.add('phase-1', 'phase-2', 'phase-3'); // Show all content
+        body.classList.add('mobile-mode'); // Add mobile indicator class
+        console.log('Mobile mode activated - width:', window.innerWidth);
+        return; // Exit early, don't attach scroll listeners
+    }
+    
+    console.log('Desktop mode activated - width:', window.innerWidth);
+
     function lockScroll() {
         scrollPosition = window.pageYOffset;
         body.style.overflow = 'hidden';
@@ -92,28 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Listen for wheel events instead of scroll
     window.addEventListener('wheel', handleScroll, { passive: false });
     
-    // Also listen for touch events for mobile
-    let startY = 0;
-    window.addEventListener('touchstart', function(event) {
-        startY = event.touches[0].clientY;
-    }, { passive: false });
-    
-    window.addEventListener('touchmove', function(event) {
-        if (isAnimating) {
-            event.preventDefault();
-            return;
+    // Handle window resize - reload if switching between mobile/desktop
+    let wasMobile = isMobileDevice();
+    window.addEventListener('resize', function() {
+        const nowMobile = isMobileDevice();
+        if (wasMobile !== nowMobile) {
+            location.reload(); // Reload page when switching device types
         }
-        
-        const currentY = event.touches[0].clientY;
-        const deltaY = startY - currentY;
-        
-        if (Math.abs(deltaY) > 80) { // Increased minimum swipe distance
-            const syntheticEvent = {
-                deltaY: deltaY,
-                preventDefault: () => event.preventDefault()
-            };
-            handleScroll(syntheticEvent);
-            startY = currentY;
-        }
-    }, { passive: false });
+    });
 });

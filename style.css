@@ -100,11 +100,82 @@ html { font-size: clamp(14px, 0.9vw + 12px, 18px); box-sizing: border-box; }
     .projects-panel{ width: clamp(28rem, 60vw, 50rem); right: 1rem; }
 }
 
+/* Tablet styles */
 @media (max-width: 900px) {
     .container{ grid-template-columns: 1fr; padding: clamp(1rem, 3vw, 1.5rem); }
     .left, .right { max-width: 100%; }
     .center{ text-align: center; }
     .projects-panel, .contact-panel{ position:relative; width:100%; transform:none; right:0; left:0; margin: var(--space-lg) auto; }
+}
+
+/* Mobile styles - optimized for phones */
+@media (max-width: 768px) {
+    /* Disable scroll animation on mobile - show all content normally */
+    body.phase-1 #leftBox,
+    body.phase-2 #leftBox,
+    body.phase-3 #leftBox,
+    body.phase-1 #rightBox,
+    body.phase-2 #rightBox,
+    body.phase-3 #rightBox,
+    body.phase-1 #centerName,
+    body.phase-2 #centerName,
+    body.phase-3 #centerName,
+    body.phase-1 #projectsPanel,
+    body.phase-2 #projectsPanel,
+    body.phase-3 #projectsPanel,
+    body.phase-1 #contactPanel,
+    body.phase-2 #contactPanel,
+    body.phase-3 #contactPanel {
+        transform: none !important;
+        opacity: 1 !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        bottom: 0 !important;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    
+    .center {
+        order: -1;
+        min-height: auto;
+        padding: 2rem 0;
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+    
+    .name {
+        text-align: center;
+        line-height: 1.1;
+    }
+    
+    .left, .right {
+        height: auto;
+        max-width: 100%;
+        margin: 0;
+    }
+    
+    .projects-panel, .contact-panel {
+        position: static;
+        transform: none;
+        margin: 1rem 0;
+        border-radius: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .projects-title, .contact-title {
+        font-size: 1.3rem;
+    }
 }
 
 body{
