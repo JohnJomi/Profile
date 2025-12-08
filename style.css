@@ -1,80 +1,179 @@
-body{
-    background: linear-gradient(80deg, #0f170f 0%, #275c3d 50%, #8ba882 100%);
-    background-attachment: fixed;
-    margin: 0;
-    padding: 20px 0;
-    min-height: 100vh;
-    box-sizing: border-box;
+/* Responsive variables and fluid sizing */
+:root {
+    --base-font: 16px;
+    font-size: 16px;
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.75rem;
+    --space-lg: 2.5rem;
+    --radius: 1.25rem;
+    --panel-bg: rgba(192, 192, 158, 0.95);
+    --accent: #82b67d;
 }
 
-.container{
-    margin: 40px 0;
-    padding: 30px 80px;
+html { font-size: clamp(14px, 0.9vw + 12px, 18px); box-sizing: border-box; }
+*,*::before,*::after { box-sizing: inherit; }
+
+/* Responsive container and columns */
+.container {
+    margin: clamp(1.5rem, 3vw, 3rem) 0;
+    padding: clamp(1.5rem, 3vw, 4rem);
     display: grid;
-    grid-template-columns: 300px 1fr 300px;
+    grid-template-columns: minmax(12rem, 20%) 1fr minmax(12rem, 20%);
     align-items: center;
     justify-items: center;
-    gap: 50px;
+    gap: clamp(1rem, 2.5vw, 3rem);
 }
 
+/* Fluid center hero */
 .center{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
-    padding: 15px 0;
+    margin: clamp(0.75rem, 1.5vw, 2rem) 0;
+    padding: clamp(0.5rem, 1vw, 1rem) 0;
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     min-height: 50vh;
-    font-size: 100px;
-    color:#82b67d;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    color: var(--accent);
     position: relative;
     z-index: 5;
 }
 
+/* Side panels adapt rather than fixed 300px */
+.left, .right {
+    margin: clamp(0.75rem, 1.5vw, 2rem) 0;
+    padding: var(--space-md);
+    background-color: var(--panel-bg);
+    width: 100%;
+    max-width: 26rem; /* ~416px */
+    height: min(80vh, 60rem);
+    border-radius: calc(var(--radius) - 0.25rem);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    font-family: "Oswald", sans-serif;
+    color: rgba(1,6,2,0.705);
+}
+
+/* Projects panel: fluid width with caps */
+.projects-panel {
+    position: fixed;
+    top: clamp(1rem, 2vw, 1.5rem);
+    bottom: clamp(1rem, 2vw, 1.5rem);
+    right: clamp(1rem, 2vw, 1.5rem);
+    width: clamp(32rem, 50vw, 60rem);
+    height: auto;
+    background: var(--panel-bg);
+    backdrop-filter: blur(15px);
+    border-radius: var(--radius);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+    transform: translateX(100%);
+    z-index: 10;
+    overflow-y: auto;
+    font-family: "Oswald", sans-serif;
+    transition: all 1.2s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+/* Contact panel: align to left column and be responsive */
+.contact-panel {
+    position: fixed;
+    bottom: clamp(1rem, 2vw, 1.5rem);
+    left: clamp(4%, 8vw, 12%);
+    transform: translateY(120%);
+    width: clamp(18rem, 26vw, 42rem);
+    background: var(--panel-bg);
+    backdrop-filter: blur(15px);
+    border-radius: var(--radius);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.4);
+    z-index: 11;
+    font-family: "Oswald", sans-serif;
+    transition: all 1.3s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+/* Smaller breakpoints */
+@media (max-width: 1200px) {
+    .container { grid-template-columns: minmax(10rem, 22%) 1fr; }
+    .right{ display:none; }
+    .projects-panel{ width: clamp(28rem, 60vw, 50rem); right: 1rem; }
+}
+
+@media (max-width: 900px) {
+    .container{ grid-template-columns: 1fr; padding: clamp(1rem, 3vw, 1.5rem); }
+    .left, .right { max-width: 100%; }
+    .center{ text-align: center; }
+    .projects-panel, .contact-panel{ position:relative; width:100%; transform:none; right:0; left:0; margin: var(--space-lg) auto; }
+}
+
+body{
+    background: linear-gradient(80deg, #0f170f 0%, #275c3d 50%, #8ba882 100%);
+    background-attachment: fixed;
+    margin: 0;
+    padding: clamp(0.5rem, 1.5vw, 2.5rem) 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Center name keeps Oswald */
+.center, .name {
+    font-family: "Oswald", sans-serif;
+}
+
+/* Content sections use more readable font */
+.left, .right, .projects-panel, .contact-panel,
+.section-title, .about-text, .education-item, .degree-title, .university, .duration, .achievements,
+.skills-category, .category-title, .skills-text,
+.certification-item, .cert-title, .cert-provider, .cert-description,
+.projects-title, .project-item, .project-name, .project-description, .project-tech, .project-demo-link,
+.contact-title, .contact-label, .contact-link, .contact-text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+p, li, .about-text, .skills-text, .cert-description, .project-description, .contact-text {
+    font-size: clamp(0.95rem, 1vw, 1.125rem);
+    line-height: 1.6;
+    font-weight: 400;
+    color: rgba(1,6,2,0.82);
+}
+
+a { color: rgba(1,6,2,0.78); text-decoration: none; }
+a:hover { color: rgba(1,6,2,0.95); text-decoration: underline; }
+
+/* Headings and titles (consistent weights and spacing) */
 .name {
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
     line-height: 1;
+    letter-spacing: 0.02em;
     text-align: left;
     white-space: pre-line;
-    text-shadow: 10px 3px 6px rgba(0, 0, 0, 0.5);
+    text-shadow: 0.625rem 0.1875rem 0.375rem rgba(0,0,0,0.5);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-.name:hover {
-    transform: scale(1.05);
-    text-shadow: 15px 5px 10px rgba(0, 0, 0, 0.7);
-    color: #8ba882;
-}
+.name:hover { transform: scale(1.05); }
 
 .left{
-    margin: 20px 0;
-    padding: 15px 0;
-    background-color: rgba(192, 192, 158, 0.95);
-    width: 300px;
-    height: 80vh;
-    border-radius: 15px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    margin: clamp(0.75rem, 1.5vw, 2rem) 0;
+    padding: var(--space-md);
+    background-color: var(--panel-bg);
+    width: 100%;
+    max-width: 26rem;
+    height: min(80vh, 60rem);
+    border-radius: calc(var(--radius) - 0.25rem);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
     justify-self: start;
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    color: rgba(1, 6, 2, 0.705);
+    color: rgba(1,6,2,0.705);
     text-align: justify;
-    padding: 20px;
-    font-size: 24px;
+    font-size: clamp(1.25rem, 1.6vw, 1.5rem); /* ~24px -> fluid */
 }
 
-.left p {
-    text-align: justify;
-    line-height: 1.4;
-    margin-bottom: 15px;
-}
+.left p { line-height: 1.4; margin-bottom: 0.75rem; }
 
 .section {
     margin-bottom: 20px;
@@ -91,16 +190,18 @@ body{
 
 .section-title {
     color: rgba(1, 6, 2, 0.9);
-    font-size: 18px;
-    font-weight: 600;
+    font-size: clamp(1rem, 1.1vw, 1.25rem);
+    font-weight: 700;
     margin-bottom: 12px;
     text-align: center;
-    border-bottom: 2px solid rgba(1, 6, 2, 0.3);
-    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(1, 6, 2, 0.35);
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .about-text {
-    font-size: 20px;
+    font-size: clamp(0.95rem, 1vw, 1.125rem);
     line-height: 1.5;
 }
 
@@ -110,22 +211,22 @@ body{
 }
 
 .degree-title {
-    color: rgba(1, 6, 2, 0.8);
-    font-size: 24px;
-    font-weight: 500;
+    color: rgba(1, 6, 2, 0.85);
+    font-size: clamp(1.15rem, 1.4vw, 1.4rem);
+    font-weight: 600;
     margin-bottom: 5px;
 }
 
 .university {
-    color: rgba(1, 6, 2, 0.7);
-    font-size: 20px;
+    color: rgba(1, 6, 2, 0.75);
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
     font-weight: 400;
     margin-bottom: 3px;
 }
 
 .duration {
-    color: rgba(1, 6, 2, 0.6);
-    font-size: 16px;
+    color: rgba(1, 6, 2, 0.65);
+    font-size: clamp(0.9rem, 1vw, 1rem);
     font-style: italic;
     margin-bottom: 10px;
 }
@@ -136,9 +237,9 @@ body{
 }
 
 .achievements li {
-    color: rgba(1, 6, 2, 0.7);
-    font-size: 18px;
-    line-height: 1.4;
+    color: rgba(1, 6, 2, 0.75);
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    line-height: 1.6;
     margin-bottom: 5px;
 }
 
@@ -148,20 +249,16 @@ body{
 }
 
 .right{
-    margin: 20px 0;
-    padding: 10px;
-    background-color: rgba(192, 192, 158, 0.95);
-    width: 300px;
-    height: 80vh;
-    border-radius: 15px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    margin: clamp(0.75rem, 1.5vw, 2rem) 0;
+    padding: var(--space-sm);
+    background-color: var(--panel-bg);
+    width: 100%;
+    max-width: 26rem;
+    height: min(80vh, 60rem);
+    border-radius: calc(var(--radius) - 0.25rem);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
     justify-self: end;
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
     overflow-y: auto;
 }
 
@@ -175,36 +272,36 @@ body{
 }
 
 .category-title {
-    color: rgba(1, 6, 2, 0.8);
-    font-size: 20px;
+    color: rgba(1, 6, 2, 0.85);
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
     font-weight: 600;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .skills-text {
-    color: rgba(1, 6, 2, 0.7);
-    font-size: 18px;
-    line-height: 1.2;
-    margin-bottom: 4px;
+    color: rgba(1, 6, 2, 0.75);
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    line-height: 1.6;
+    margin-bottom: 6px;
     text-align: justify;
 }
 
 .certification-item {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .cert-title {
-    color: rgba(1, 6, 2, 0.8);
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 1px;
+    color: rgba(1, 6, 2, 0.85);
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    font-weight: 600;
+    margin-bottom: 2px;
 }
 
 .cert-provider {
-    color: rgba(1, 6, 2, 0.6);
-    font-size: 16px;
+    color: rgba(1, 6, 2, 0.65);
+    font-size: clamp(0.9rem, 1vw, 1rem);
     font-style: italic;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
 .cert-description {
@@ -232,17 +329,19 @@ body{
 }
 
 .contact-content {
-    padding: 35px 30px;
+    padding: clamp(1.25rem, 2.5vw, 3rem);
 }
 
 .contact-title {
     color: rgba(1, 6, 2, 0.9);
-    font-size: 24px;
+    font-size: clamp(1.25rem, 1.5vw, 1.5rem);
     font-weight: 700;
     text-align: center;
-    margin-bottom: 25px;
-    border-bottom: 3px solid rgba(1, 6, 2, 0.3);
+    margin-bottom: 20px;
+    border-bottom: 3px solid rgba(1, 6, 2, 0.35);
     padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .contact-item {
@@ -273,27 +372,29 @@ body{
 }
 
 .contact-label {
-    color: rgba(1, 6, 2, 0.8);
-    font-size: 14px;
+    color: rgba(1, 6, 2, 0.85);
+    font-size: clamp(0.9rem, 1vw, 1rem);
     font-weight: 600;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .contact-link {
-    color: rgba(1, 6, 2, 0.7);
-    font-size: 14px;
+    color: rgba(1, 6, 2, 0.75);
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    font-weight: 400;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease, transform 0.15s ease;
 }
 
 .contact-link:hover {
-    color: rgba(1, 6, 2, 0.9);
+    color: rgba(1, 6, 2, 0.95);
+    transform: translateX(3px);
     text-decoration: underline;
 }
 
 .contact-text {
-    color: rgba(1, 6, 2, 0.7);
-    font-size: 14px;
+    color: rgba(1, 6, 2, 0.75);
+    font-size: clamp(0.9rem, 1vw, 1rem);
 }
 
 /* Scroll Animation Styles */
@@ -334,19 +435,21 @@ body{
 
 .projects-title {
     color: rgba(1, 6, 2, 0.9);
-    font-size: 32px;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     font-weight: 700;
     text-align: center;
-    margin-bottom: 40px;
-    border-bottom: 3px solid rgba(1, 6, 2, 0.3);
-    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid rgba(1, 6, 2, 0.35);
+    padding-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .project-item {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+    margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
     border: 1px solid rgba(1, 6, 2, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -358,26 +461,26 @@ body{
 
 .project-name {
     color: rgba(1, 6, 2, 0.9);
-    font-size: 22px;
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .project-description {
-    color: rgba(1, 6, 2, 0.7);
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 15px;
+    color: rgba(1, 6, 2, 0.75);
+    font-size: clamp(0.95rem, 1.05vw, 1.1rem);
+    line-height: 1.6;
+    margin-bottom: 12px;
     text-align: justify;
 }
 
 .project-tech {
-    color: rgba(1, 6, 2, 0.6);
-    font-size: 14px;
+    color: rgba(1, 6, 2, 0.65);
+    font-size: clamp(0.85rem, 0.95vw, 0.95rem);
     font-weight: 500;
     font-style: italic;
     background: rgba(1, 6, 2, 0.1);
-    padding: 8px 12px;
+    padding: 0.5rem 0.75rem;
     border-radius: 20px;
     display: inline-block;
 }
@@ -387,23 +490,23 @@ body{
 }
 
 .project-demo-link {
-    color: rgba(1, 6, 2, 0.8);
-    font-size: 16px;
+    color: rgba(1, 6, 2, 0.9);
+    font-size: clamp(0.9rem, 1vw, 1rem);
     font-weight: 600;
     text-decoration: none;
-    background: rgba(1, 6, 2, 0.15);
+    background: rgba(1, 6, 2, 0.18);
     padding: 10px 16px;
     border-radius: 25px;
     display: inline-block;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(1, 6, 2, 0.3);
+    transition: all 0.25s ease;
+    border: 2px solid rgba(1, 6, 2, 0.35);
 }
 
 .project-demo-link:hover {
-    background: rgba(1, 6, 2, 0.25);
-    color: rgba(1, 6, 2, 0.9);
+    background: rgba(1, 6, 2, 0.28);
+    color: rgba(1, 6, 2, 0.95);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
 }
 
 /* Phase-based Animation States */

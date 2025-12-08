@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Apply responsive CSS edits",
+			"type": "shell",
+			"command": "echo 'Applying responsive CSS edits'",
+			"isBackground": false
+		}
+	]
+}
