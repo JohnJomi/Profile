@@ -8,7 +8,7 @@ A modern, responsive personal profile website showcasing my background, educatio
 - **Modern UI**: Clean gradient background with smooth animations
 - **Interactive Elements**: Hover effects on name and sections
 - **Typography**: Beautiful Oswald font from Google Fonts
-- **Professional Layout**: Organized sections for easy reading
+- **Professional Layout**: Organized sections for easy reading!
 
 ## 🎨 Design Elements
 
